@@ -1,0 +1,23 @@
+body {
+    background-color: hsl(123, 38%, 67%);
+}
+
+h1 {
+    color: hsl(148, 33%, 28%);
+    text-align: center;
+}
+
+p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: rgb(1, 25, 1);
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}

@@ -1,0 +1,14 @@
+h1{
+    font-family: 'Courier New', Courier, monospace;
+    color: aqua;
+}
+
+p{
+    color: blueviolet;
+    border: 1px;
+    border-style: solid;
+}
+
+#Perros {
+    color: aqua;
+}
