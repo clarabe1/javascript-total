@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Audio 1</title>
+</head>
+
+<body>
+
+    <img src="./Pokemon.png">
+    <br>
+    <button onclick="comenzarAudio()">cries</button>
+    <h1>Wartortle</h1>
+    <audio id="audioPokemon" controls>
+        <source src="./cries_pokemon_latest_8.ogg" type="audio/mpeg">
+    </audio>
+
+    <script>
+
+        let elementoAudioPokemon = document.getElementById("audioPokemon");
+
+        function comenzarAudio() {
+            elementoAudioPokemon.play();
+        }
+    </script>
+</body>
+
+</html>

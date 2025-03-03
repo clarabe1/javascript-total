@@ -1,0 +1,22 @@
+<input type="number" id="tiempoElegido">
+    <button onclick="comenzarTiempo()">Alarma</button>
+
+    <audio id="audioAlarma" controls>
+        <source src="./Audios/alarma.mp3" type="audio/mpeg">
+        Sonido no habilitado
+    </audio>
+
+    <script>
+        let elementoSegundos = document.getElementById ("tiempoElegido");
+        let elementoTextoAlarma = document.getElementById ("textoAlarma");
+        let elementoSonidoAlarma = document.getElementById ("audioAlarma");
+
+        function comenzarTiempo() {
+            setTimeout(tiempoCumplido, 1000 * elementoSegundos.value)
+        }
+
+        function tiempoCumplido() {
+            elementoTextoAlarma.textContent = "Encendido";
+            elementoTextoAlarma.style.color = "green";
+            elementoSonidoAlarma.play();
+        }

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Ingreso de usuarios 1</title>
+</head>
+
+<body>
+    <p>Ingresa el nombre de tu mascota</p>
+    <input type="text" id="nombreDeMascota">
+    <button onclick="mostrarNombre()">Click aqui</button>
+    <h1 id="salida">No sé el nombre de tu mascota</h1>
+
+    <script>
+        function mostrarNombre() {
+            let elementoNombre = document.getElementById("nombreDeMascota");
+            let elementoTexto = document.getElementById("salida");
+            let mensaje = "El nombre de tu mascota es " + elementoNombre.value
+
+            elementoTexto.textContent = mensaje;
+        }
+    </script>
+</body>
+
+</html>
