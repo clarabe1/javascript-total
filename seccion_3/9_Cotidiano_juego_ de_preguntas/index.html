@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Juego de preguntas</title>
+    <link rel="stylesheet" href="misEstilos.css">
+</head>
+
+<body onload="comenzarTiempo()">
+    <h1>Responde las preguntas lo más rápido que puedas</h1> <h2 id="tiempoRestante">00</h2>
+   
+    <h2>1. ¿Qué país tiene más habitantes?</h2>
+    <input type="text">
+    <br>
+    <br>
+    <h2>2. ¿Cuál es el río más largo del mundo?</h2>
+    <input type="text">
+    <br>
+    <br>
+    <h2>3. ¿Cuál es el país más grande del mundo por área?</h2>
+    <input type="text">
+    <br>
+    <br>
+    <h2>4. ¿Cuál es el planeta más cercano a la Tierra?</h2>
+    <input type="text">
+    <br>
+    <br>
+    <h2>5. ¿En qué sistema planetario se encuentra la Tierra?</h2>
+    <input type="text">
+    <br>
+    <br>
+
+    <audio id="audioAlarma">
+        <source src="Audio/gameover.mp3" type="audio/mpeg">Sonido no habilitado
+    </audio>
+
+    <script>
+        let svs
+        let fsv
+        let ss
+    </script>
+    <button onclick="detenerTiempo()">Termine</button>
+    <br>
+    <br>
+    <button onclick="location.reload()">Volver a intentar</button>
+
+</body>
+
+</html>
