@@ -1,0 +1,53 @@
+body {
+    background-color: rgb(242, 127, 255);
+}
+
+#buttonTermine {
+    background-color: rgb(121, 220, 108);
+    width: 8.3%;
+    height: 45px;
+}
+
+#buttonVolver {
+    background-color: rgb(251, 255, 127);
+    width: 8.3%;
+    height: 45px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#tiempoElegido {
+    color: rgb(130, 12, 12);
+}
+
+#Respuesta1 {
+    width: 11%;
+    height: 25px;
+    background-color: rgb(125, 170, 200);
+}
+
+#Respuesta2 {
+    width: 11%;
+    height: 25px;
+    background-color: rgb(125, 170, 200);
+}
+
+#Respuesta3 {
+    width: 11%;
+    height: 25px;
+    background-color: rgb(125, 170, 200);
+}
+
+#Respuesta4 {
+    width: 11%;
+    height: 25px;
+    background-color: rgb(125, 170, 200);
+}
+
+#Respuesta5 {
+    width: 11%;
+    height: 25px;
+    background-color: rgb(125, 170, 200);
+}

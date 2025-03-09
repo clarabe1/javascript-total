@@ -6,27 +6,28 @@
     <link rel="stylesheet" href="misEstilos.css">
 </head>
 
-<body onload="comenzarTiempo()">
-    <h1>Responde las preguntas lo más rápido que puedas</h1> <h2 id="tiempoRestante">00</h2>
-   
+<body onload="comenzarTemporizador()">
+    <h1>Responde las preguntas lo más rápido que puedas</h1>
+    <h1 id="tiempoElegido">30</h1>
+
     <h2>1. ¿Qué país tiene más habitantes?</h2>
-    <input type="text">
+    <input type="text" id="Respuesta1">
     <br>
     <br>
     <h2>2. ¿Cuál es el río más largo del mundo?</h2>
-    <input type="text">
+    <input type="text" id="Respuesta2">
     <br>
     <br>
     <h2>3. ¿Cuál es el país más grande del mundo por área?</h2>
-    <input type="text">
+    <input type="text" id="Respuesta3">
     <br>
     <br>
     <h2>4. ¿Cuál es el planeta más cercano a la Tierra?</h2>
-    <input type="text">
+    <input type="text" id="Respuesta4">
     <br>
     <br>
     <h2>5. ¿En qué sistema planetario se encuentra la Tierra?</h2>
-    <input type="text">
+    <input type="text" id="Respuesta5">
     <br>
     <br>
 
@@ -35,14 +36,48 @@
     </audio>
 
     <script>
-        let svs
-        let fsv
-        let ss
+        let tiempo = 30;
+        let elementoSonidoAlarma = document.getElementById("audioAlarma");
+        let elementoTiempo = document.getElementById("tiempoElegido");
+        let intervalo;
+
+        function comenzarTemporizador() {
+            intervalo = setInterval(function () {
+                tiempo--;
+                let minutos = Math.floor(tiempo / 60).toString().padStart(2, "0");
+                let segundos = (tiempo % 60).toString().padStart(2, "0");
+                elementoTiempo.textContent = minutos + ":" + segundos;
+
+                finDelTemporizador();
+            }, 1000);
+        }
+
+        function finDelTemporizador() {
+            if (tiempo <= 0) {
+                clearInterval(intervalo);
+                elementoSonidoAlarma.play();
+                alert("GAME OVER: Se acabó el tiempo, Intenta nuevamente");
+            }
+        }
+
+        function detenerTemporizador() {
+            clearInterval(intervalo);
+            let fechaActual = new Date();
+            let tusRespuestas = [
+                document.getElementById("Respuesta1").value,
+                document.getElementById("Respuesta2").value,
+                document.getElementById("Respuesta3").value,
+                document.getElementById("Respuesta4").value,
+                document.getElementById("Respuesta5").value,
+            ];
+
+            alert("La fecha de hoy es " + fechaActual.toLocaleDateString('es-ES') + " y tus respuestas son:\n" + tusRespuestas.join("\n"));
+        }
     </script>
-    <button onclick="detenerTiempo()">Termine</button>
+    <button onclick="detenerTemporizador()" id="buttonTermine">Termine!</button>
     <br>
     <br>
-    <button onclick="location.reload()">Volver a intentar</button>
+    <button onclick="location.reload()" id="buttonVolver">Volver a intentar</button>
 
 </body>
 
