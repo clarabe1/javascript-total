@@ -63,7 +63,7 @@
         function detenerTemporizador() {
             clearInterval(intervalo);
             let fechaActual = new Date();
-            let tusRespuestas = [
+            let lasRespuestas = [
                 document.getElementById("Respuesta1").value,
                 document.getElementById("Respuesta2").value,
                 document.getElementById("Respuesta3").value,
@@ -71,7 +71,7 @@
                 document.getElementById("Respuesta5").value,
             ];
 
-            alert("La fecha de hoy es " + fechaActual.toLocaleDateString('es-ES') + " y tus respuestas son:\n" + tusRespuestas.join("\n"));
+            alert("La fecha de hoy es " + fechaActual.toLocaleDateString('es-ES') + " y tus respuestas son:\n" + lasRespuestas.join("\n"));
         }
     </script>
     <button onclick="detenerTemporizador()" id="buttonTermine">Termine!</button>
