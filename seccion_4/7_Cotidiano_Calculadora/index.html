@@ -2,38 +2,101 @@
 <html>
 
 <head>
-    <title>Calculadora|</title>
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="misEstilos.css">
 </head>
 
 <body>
-<h1 style="text-align: center;">Calculadora</h1>
-<input type="number" id="numero1"> <input type="number" id="numero2">
-<button onclick="suma()">+</button>
-<button onclick="resta()">-</button>
-<button onclick="multiplicacion()">x</button>
-<button onclick="division()">/</button>
+    <h1 style="text-align: center;">Calculadora</h1>
+    <input type="number" id="numero1"> <input type="number" id="numero2">
+    <br><br>
+    <button onclick="suma()">+</button>
+    <button onclick="resta()">-</button>
+    <button onclick="multiplicacion()">x</button>
+    <button onclick="division()">/</button>
+    <br><br>
+    <button onclick="raiz()">Raiz</button>
+    <button onclick="potencia()">Potencia</button>
+    <button onclick="absoluto()">Absoluto</button>
+    <button onclick="random()">Random</button>
 
-<button onclick="raiz()">Raiz</button>
-<button onclick="potencia()">Potencia</button>
-<button onclick="absoluto()">Absoluto</button>
-<button onclick="random()">Random</button>
+    <h1>Resultado:</h1>
+    <div id="resultado"></div>
+    <br><br>
+    <button onclick="redondeadoCercano()">round</button>
+    <button onclick="redondeadoAbajo()">floor</button>
+    <button onclick="redondeadoArriba()">ceil</button>
 
-<h1>Resultado:</h1>
-<input type="text" readonly>
+    <script>
+        function mostrarResultado(valor) {
+            document.getElementById("resultado").innerHTML = valor;
+        }
 
-<script>
-    function sumar() {
-        let suma = numero1 + numero2;
-    }
-    let resta = ;
-    let multiplicacion = ;
-    let division = ;
+        function suma() {
+            let numero1 = parseFloat(document.getElementById("numero1").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            mostrarResultado(numero1 + numero2);
+        }
+        function resta() {
+            let numero1 = parseFloat(document.getElementById("numero1").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            mostrarResultado(numero1 - numero2);
+        }
+        function multiplicacion() {
+            let numero1 = parseFloat(document.getElementById("numero1").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            mostrarResultado(numero1 * numero2);
+        }
+        function division() {
+            let numero1 = parseFloat(document.getElementById("numero1").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            mostrarResultado(numero1 / numero2);
+        }
 
-    let raiz = ;
-    let potencia = ;
-    let absoluto = ;
-    let random = ;
-</script>
+        function raiz() {
+            let numero1 = parseFloat(document.getElementById("numero1").value);
+            mostrarResultado(Math.sqrt(numero1));
+        }
+        function potencia() {
+            let numero1 = parseFloat(document.getElementById("numero1").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            mostrarResultado(Math.pow(numero1, numero2));
+        }
+        function absoluto() {
+            let elementoContenido = document.getElementById("resultado");
+            let textoActual = elementoContenido.textContent;
+            let numero = Number(textoActual);
+            elementoContenido.textContent = Math.abs(numero)
+        }
+        function random() {
+            let numero1 = parseFloat(document.getElementById("numero1").value);
+            let numero2 = parseFloat(document.getElementById("numero2").value);
+            let resultado = Math.random() * (numero2 - numero1) + numero1;
+            mostrarResultado(resultado);
+        }
+
+        function redondeadoCercano() {
+            let elementoContenido = document.getElementById("resultado");
+            let textoActual = elementoContenido.textContent;
+            let numero = Number(textoActual);
+            let resultado = Math.round(numero);
+            elementoContenido.textContent = resultado || textoActual;
+        }
+        function redondeadoAbajo() {
+            let elementoContenido = document.getElementById("resultado");
+            let textoActual = elementoContenido.textContent;
+            let numero = Number(textoActual);
+            let resultado = Math.floor(numero);
+            elementoContenido.textContent = resultado || textoActual;
+        }
+        function redondeadoArriba() {
+            let elementoContenido = document.getElementById("resultado");
+            let textoActual = elementoContenido.textContent;
+            let numero = Number(textoActual);
+            let resultado = Math.ceil(numero);
+            elementoContenido.textContent = resultado || textoActual;
+        }
+    </script>
 
 </body>
 

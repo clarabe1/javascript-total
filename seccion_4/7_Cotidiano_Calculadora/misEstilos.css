@@ -1,0 +1,33 @@
+body {
+    text-align: center;
+    background-color: rgb(29, 69, 103);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+color: rgb(195, 155, 233);
+}
+
+input {
+    background-color: rgb(195, 155, 233);
+    height: 30px;
+    width: 140px;
+}
+
+#resultado {
+    height: 35px;
+    width: 150px;
+    background-color: rgb(195, 155, 233);
+    border: 1px solid black;
+    text-align: center;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+button {
+    background-color: rgb(195, 155, 233);
+    height: 30px;
+    width: 4.7%;
+}
