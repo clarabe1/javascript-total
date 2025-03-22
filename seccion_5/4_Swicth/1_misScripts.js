@@ -1,21 +1,25 @@
-function mensajeOculto() {
-    let elementoFruta = document.getElementById("nombreFruta");
-    let fruta = elementoFruta.value;
-
-    let elementoRespuesta = document.getElementById("respuesta");
+function mensajeOculto(fruta) {
+    let precio;
 
     switch (fruta) {
         case "Manzana":
-            elementoRespuesta.textContent = "$15";
+            precio = 15;
             break;
         case "Naranja":
-            elementoRespuesta.textContent = "$20";
+            precio = 20;
             break;
         case "Banana":
-            elementoRespuesta.textContent = "$25";
+            precio = 25;
             break;
         default:
-            elementoRespuesta.textContent = "Fruta no encontrada";
+            alert("No se encuentra disponible esta fruta");
+            return;
     }
-    alert("El precio de la fruta " + fruta + " es: " + elementoRespuesta.textContent);
+
+    alert("El precio de la " + fruta + " es: $" + precio);
+}
+
+function enviar() {
+    let fruta = document.getElementById("nombreFruta").value;
+    mensajeOculto(fruta);
 }

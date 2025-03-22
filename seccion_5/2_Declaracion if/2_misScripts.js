@@ -1,5 +1,5 @@
-function mensajeOculto(culito) {
-        if (culito === 1) {
+function mensajeOculto(queque) {
+        if (queque === 1) {
         alert("Hola mundo")
     }   
 }
