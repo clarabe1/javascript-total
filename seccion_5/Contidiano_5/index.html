@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú cine</title>
+    <script src="misScripts.js" defer></script>
+    <link rel="stylesheet" href="misEstilos.css">
+</head>
+
+<body>
+    <h1>Recomendador de Películas</h1>
+    <h3>Menú</h3>
+    <p>Bienvenidos a la magia del cine &#x1F4FD;. Prepárate para vivir emociones únicas y crear recuerdos inolvidables. 
+    <br>En nuestro cine, cada película cuenta una historia que te transportará a mundos extraordinarios, 
+    <br>despertará tus sentidos y te hará soñar. <br>Descubre nuestra cartelera, diseñada para todos los gustos,
+    <br>desde aventuras llenas de acción hasta conmovedores dramas y comedias que te harán reír a carcajadas.</p>
+   
+    <p>Edad:</p>
+
+    <input type="number" id="numeroEdad">
+    <br><br>
+    <button onclick="mostrarPelicula('Drama')" id="boton">Drama</button>
+    <button onclick="mostrarPelicula('Comedia')" id="boton">Comedia</button>
+    <button onclick="mostrarPelicula('Musical')" id="boton">Musical</button>
+    <button onclick="mostrarPelicula('Crimen')" id="boton">Crimen</button>
+
+    <h2>Nuestra recomendación:</h2>
+    <p id="nuestraRecomendacion"></p>
+    <button onclick="reiniciarSeleccion()" id="reiniciar">Reiniciar</button>
+
+
+</body>
+
+</html>
