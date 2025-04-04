@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>While 2</title>
+</head>
+<body>
+<script>
+        function testLoop() {
+            let number = prompt("Ingresa un numero del 1 al 10: ");
+           
+            number = parseInt(number);
+            number = Math.max(1, Math.min(10, number));
+            
+            let contador = number;
+
+            while (contador <= 10) {
+                console.log(contador);
+                contador++;
+            }
+        }
+        testLoop();
+</script>
+</body>
+</html> 
