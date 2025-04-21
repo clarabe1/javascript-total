@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>break & continue 1</title>
+</head>
+<body>
+    <script>
+        let array1 = ['A', 'A', 'B', 'A', 'B', 'B', 'A'];
+        
+        function testloop() {
+            for (let letra of array1) {
+                if (letra === 'B') {
+                    break; 
+                }
+                console.log(letra);
+            }
+
+        }
+        testloop()
+    </script>
+</body>
+</html>
