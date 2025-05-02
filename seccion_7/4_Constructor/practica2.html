@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Construtor</title>
+</head>
+<body>
+    <script>
+        function polo() {
+            this.color = "";
+            this.marca = "Lacoste";
+            this.talle = "L";
+            this.fabricar = function () {
+                console.log("Nuevo polo");
+            }
+        }
+ 
+        let Polo1 = new polo();
+        let  Polo2 = new polo();
+        let  Polo3 = new polo();
+    </script>
+</body>
+</html>

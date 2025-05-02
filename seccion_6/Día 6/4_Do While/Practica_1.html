@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Loop Sencillo</title>
+</head>
+<body>
+    <h1>Vueltas registradas</h1>
+    <div id="resultados"></div>
+
+    <script>
+        function testLoop(vueltas) {
+            let contador = 1;
+            let resultados = "";
+            do {
+                resultados += "Vuelta número: " + contador + "<br>";
+                contador++;
+            } while (contador <= vueltas);
+            document.getElementById("resultados").innerHTML = resultados;
+        }
+        let vueltas = parseInt(prompt("¿Cuántas vueltas quieres registrar?"));
+        testLoop(vueltas);
+    </script>
+</body>
+</html>
