@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>constructores con parametros 2</title>
+</head>
+
+<body>
+    <script>
+        function Polo(marca, color, talle) {
+            this.marca = marca;
+            this.color = color;
+            this.talle = talle;
+            this.fabricar = function () {
+                console.log("Fabricado");
+            }
+        }
+
+        let Polo1 = new Polo("Lacoste", "Azul navy", "L");
+        let Polo2 = new Polo("Tommy Hilfiger", "Vino tinto", "M");
+        let Polo3 = new Polo("New balance", "Morado", "L");
+
+    </script>
+</body>
+
+</html>

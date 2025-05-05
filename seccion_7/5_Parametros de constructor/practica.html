@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>constructores con parametros 1</title>
+</head>
+
+<body>
+    <script>
+        function Automovil(marca, modelo, anio) {
+            this.anio = anio;
+            this.marca = marca;
+            this.modelo = modelo;
+            this.arrancar = function () {
+                console.log("en marcha");
+            }
+        }
+
+        let modelo1 = new Automovil("MC20Cielo", "Maserati", 2022);
+        let modelo2 = new Automovil("GT2Stradale", "Maserati", 2022);
+        let modelo3 = new Automovil("GranTurismo", "Maserati", 2022);
+
+    </script>
+</body>
+
+</html>
