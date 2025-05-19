@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor de prototipos 1</title>
+</head>
+<body>
+    <script>
+        function restaurante (nombre, direccion, ciudad){
+            this.nombre = nombre;
+            this.direccion = direccion;
+            this.ciudad = ciudad;
+        }
+ 
+        let restaurante1 = new restaurante ('Pollo Granjero', 'El Coco', 'Alajuela');
+        let restaurante2 = Object.create(restaurante1)
+ 
+        function prototipos() {
+            console.log(restaurante2);
+            alert('Ve la consola para ver la herencia del restaurante 2')
+        }
+        prototipos()
+    </script>
+</body>
+</html>
+ 
