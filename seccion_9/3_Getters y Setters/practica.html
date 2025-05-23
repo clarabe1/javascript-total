@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getter</title>
+</head>
+<body>
+   <script>
+    class Ciudad {
+        constructor(nombre, pais) {
+            this.nombre = nombre;
+            this.pais = pais;
+        }
+    }
+
+    class Ciudad1 extends Ciudad {
+        constructor(nombre, pais, cantHabitantes) {
+            super(nombre, pais);
+            this._cantHabitantes = cantHabitantes; 
+        }
+        get cantHabitantes() {
+            return this._cantHabitantes;
+        } 
+        set cantHabitantes(nuevoCantHabitantes) {
+                this._cantHabitantes = nuevoCantHabitantes;
+            }  
+    }
+
+    let Ciudad2 = new Ciudad1("Santo Domingo", "RD", 3000000); 
+    console.log(Ciudad2);
+   </script>
+</body>
+</html>
