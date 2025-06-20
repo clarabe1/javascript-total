@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>callback 2</title>
+</head>
+
+<body>
+    <script>
+        function test(callback) {
+            setTimeout(function () {
+                callback("Mensaje Impreso");
+            }, 1500);
+        }
+
+        function Mensaje(test) {
+        alert(test)
+        }
+        
+        test(Mensaje)
+        </script>
+</body>
+
+</html>
