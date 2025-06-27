@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Esta función recibe una URL y devuelve una promesa con los datos obtenidos de esa dirección
+        function getDatos(url) {
+            // Creamos y devolvemos una nueva promesa
+            return new Promise(function (resolve, reject) {
+                // Creamos un objeto para hacer la petición al servidor
+                let xhr = new XMLHttpRequest();
+                // Configuramos la petición para que sea de tipo GET y a la URL que recibimos
+                xhr.open('GET', url);
+
+                // Esta función se ejecuta cuando recibimos una respuesta del servidor
+                xhr.onload = function () {
+                    // Si la respuesta fue exitosa (código 200)
+                    if (xhr.status === 200) {
+                        // Convertimos el texto recibido en un objeto de JavaScript y resolvemos la promesa
+                        resolve(JSON.parse(xhr.responseText));
+                    } else {
+                        // Si hubo un error en la respuesta, rechazamos la promesa con un mensaje de error
+                        reject(new Error(xhr.statusText));
+                    }
+                };
+
+                // Esta función se ejecuta si ocurre un error de red (por ejemplo, no hay internet)
+                xhr.onerror = function () {
+                    // Rechazamos la promesa con un mensaje de error de red
+                    reject(new Error("Network Error"));
+                };
+
+                // Enviamos la petición al servidor
+                xhr.send();
+            });
+        }
+
+        // Usamos la función getDatos con una URL de ejemplo que nos da una lista de usuarios
+        getDatos('https://jsonplaceholder.typicode.com/users')
+            // Si la petición fue exitosa, mostramos los datos en la consola
+            .then(data => console.log(data))
+            // Si hubo un error, mostramos el error en la consola
+            .catch(error => console.error(error));
+    </script>
+</body>
+</html>

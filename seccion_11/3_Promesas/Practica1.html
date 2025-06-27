@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise 1</title>
+</head>
+<body>
+    <script>
+        function test(resultado) {
+            let miPromesa = new Promise (function(resolve, reject){
+                    let verdad = true
+                    if(verdad){
+                        resolve("La promesa es verdadera");
+                    }else{
+                        reject("La promesa es falsa");
+                    }
+            });
+            miPromesa.then(function(resultado){
+                console.log(resultado);
+            }).catch(function(error){
+                console.log(error);
+            });
+        }
+        test();
+    </script>
+</body>
+</html>

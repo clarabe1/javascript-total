@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+ 
+<body>
+    <h1>Abrir consola</h1>
+    <script>
+        async function request(url) {
+            let respuesta = await fetch(url);
+            let datos = await respuesta.json();
+            return datos;
+        }
+ 
+        request('mensaje.json').then(resultado => {
+            console.log(resultado);
+        });
+ 
+    </script>
+</body>
+ 
+</html>
