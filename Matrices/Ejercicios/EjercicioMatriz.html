@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio de Matrices</title>
+</head>
+
+<body>
+    <h1>Ejercicio de Matrices
+        <br>
+        Dimensiones: (4×3)
+    </h1>
+
+    <button onclick="llenarMatriz()">1. Llenar matriz (10-20)</button>
+    <br>
+    <button onclick="calcularPromedio()">2. Promedio</button>
+    <br>
+    <button onclick="sumarNumero()">3. Sumar número</button>
+    <br>
+    <button onclick="duplicarFila()">4. Duplicar fila</button>
+    <br><br>
+
+    <button onclick="sumaDiagonalPrincipal()">5. Suma diagonal principal</button>
+    <br>
+    <button onclick="sumaDiagonalInversa()">6. Suma diagonal inversa</button>
+    <br>
+    <button onclick="encontrarMayor()">7. Mayor elemento</button>
+    <br>
+    <button onclick="buscarNumero()">8. Buscar número</button>
+    <br><br>
+
+    <button onclick="buscarPosiciones()">9. Buscar posiciones</button>
+    <br>
+    <button onclick="modificarBajoDiagonal()">10. Ceros bajo diagonal</button>
+    <br>
+    <button onclick="intercambiarFilas()">11. Intercambiar filas</button>
+    <br>
+    <button onclick="copiarCeldaSuperior()">12. Copiar celda superior</button>
+    <br><br>
+    <button onclick="ordenarFilas()">13. Ordenar filas</button>
+    <br>
+    <button onclick="sumaFilas()">14. Suma filas</button>
+    <br>
+    <button onclick="mayorColumnas()">15. Mayor columnas</button>
+    <br>
+    <button onclick="mostrarMatriz()">16. EspacioString()</button>
+    <br><br>
+    <hr>
+    <table border="1" id="tabla"></table>
+    <pre id="resultado"></pre>
+
+    <script>
+        class Matriz {
+            static CANT_FILAS = 4;
+            static CANT_COLUMNAS = 3;
+
+            constructor() {
+                this.datos = [];
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    this.datos[i] = [];
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        this.datos[i][j] = 0;
+                    }
+                }
+            }
+
+            llenarMatriz() {
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        this.datos[i][j] = Math.floor(Math.random() * 11) + 10;
+                    }
+                }
+            }
+
+            promedio() {
+                let suma = 0;
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        suma += this.datos[i][j];
+                    }
+                }
+                return suma / (Matriz.CANT_FILAS * Matriz.CANT_COLUMNAS);
+            }
+
+            sumaNumero(n) {
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        this.datos[i][j] += n;
+                    }
+                }
+            }
+
+            duplicarFila(f) {
+                if (f >= 0 && f < Matriz.CANT_FILAS) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        this.datos[f][j] *= 2;
+                    }
+                }
+            }
+
+            sumaDiagonalPrincipal() {
+                let suma = 0, lim = Math.min(Matriz.CANT_FILAS, Matriz.CANT_COLUMNAS);
+                for (let i = 0; i < lim; i++) suma += this.datos[i][i];
+                return suma;
+            }
+
+            sumaDiagonalInversa() {
+                let suma = 0, lim = Math.min(Matriz.CANT_FILAS, Matriz.CANT_COLUMNAS);
+                for (let i = 0; i < lim; i++) suma += this.datos[i][Matriz.CANT_COLUMNAS - 1 - i];
+                return suma;
+            }
+
+            mayorMatriz() {
+                let max = this.datos[0][0];
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        if (this.datos[i][j] > max) max = this.datos[i][j];
+                    }
+                }
+                return max;
+            }
+
+            buscaNumero(x) {
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        if (this.datos[i][j] === x) return true;
+                    }
+                }
+                return false;
+            }
+
+            buscaPosiciones(x) {
+                let posiciones = "";
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        if (this.datos[i][j] === x) posiciones += `(${i},${j}) `;
+                    }
+                }
+                return posiciones === "" ? "Número no encontrado" : posiciones.trim();
+            }
+
+            modificaBajoDiagonal() {
+                let lim = Math.min(Matriz.CANT_FILAS, Matriz.CANT_COLUMNAS);
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        if (i > j) this.datos[i][j] = 0;
+                    }
+                }
+            }
+
+            intercambiaFilas() {
+                for (let f = 0; f + 1 < Matriz.CANT_FILAS; f += 2) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        [this.datos[f][j], this.datos[f + 1][j]] = [this.datos[f + 1][j], this.datos[f][j]];
+                    }
+                }
+            }
+
+            copiaCeldaSuperior() {
+                for (let i = 1; i < Matriz.CANT_FILAS; i++) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        this.datos[i][j] = 2 * this.datos[i - 1][j];
+                    }
+                }
+            }
+
+            ordenarMatriz() {
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    this.datos[i].sort((a, b) => a - b);
+                }
+            }
+
+            sumaFilas() {
+                let resultado = [];
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    let suma = 0;
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        suma += this.datos[i][j];
+                    }
+                    resultado[i] = suma;
+                }
+                return resultado;
+            }
+
+            mayorColumnas() {
+                let resultado = [];
+                for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                    let max = this.datos[0][j];
+                    for (let i = 1; i < Matriz.CANT_FILAS; i++) {
+                        if (this.datos[i][j] > max) max = this.datos[i][j];
+                    }
+                    resultado[j] = max;
+                }
+                return resultado;
+            }
+
+            EspacioString() {
+                let resultado = "";
+                for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                    for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                        resultado += this.datos[i][j] + "\t";
+                    }
+                    resultado += "\n";
+                }
+                return resultado;
+            }
+        }
+
+        const matriz = new Matriz();
+        let opcion = 0;
+
+        function main() {
+            do {
+                let menu = prompt(
+                    "=== MENÚ DE OPERACIONES CON MATRIZ ===\n" +
+                    "1.  Llenar matriz con números aleatorios (10-20)\n" +
+                    "2.  Calcular promedio\n" +
+                    "3.  Sumar un número a todas las celdas\n" +
+                    "4.  Duplicar una fila específica\n" +
+                    "5.  Suma diagonal principal\n" +
+                    "6.  Suma diagonal inversa\n" +
+                    "7.  Encontrar el mayor elemento\n" +
+                    "8.  Buscar un número en la matriz\n" +
+                    "9.  Buscar posiciones de un número\n" +
+                    "10. Llenar con ceros bajo diagonal principal\n" +
+                    "11. Intercambiar filas pares con impares\n" +
+                    "12. Copiar celda superior (duplicada)\n" +
+                    "13. Ordenar cada fila\n" +
+                    "14. Suma de cada fila\n" +
+                    "15. Mayor de cada columna\n" +
+                    "16. Mostrar matriz (EspacioString)\n" +
+                    "0.  Salir\n\n" +
+                    "Elige una opción:"
+                );
+
+                opcion = Number(menu);
+
+                switch (opcion) {
+                    case 1:
+                        matriz.llenarMatriz();
+                        console.log("Matriz llenada con números aleatorios entre 10 y 20.");
+                        break;
+                    case 2:
+                        console.log(`El promedio de la matriz es: ${matriz.promedio().toFixed(2)}`);
+                        break;
+                    case 3:
+                        let n = Number(prompt("Ingrese el número a sumar:"));
+                        matriz.sumaNumero(n);
+                        console.log(`Se sumó ${n} a todas las celdas.`);
+                        break;
+                    case 4:
+                        let fila = Number(prompt("Ingrese el número de fila a duplicar (0-3):"));
+                        matriz.duplicarFila(fila);
+                        console.log(`Fila ${fila} duplicada (si es válida).`);
+                        break;
+                    case 5:
+                        console.log(`Suma diagonal principal: ${matriz.sumaDiagonalPrincipal()}`);
+                        break;
+                    case 6:
+                        console.log(`Suma diagonal inversa: ${matriz.sumaDiagonalInversa()}`);
+                        break;
+                    case 7:
+                        console.log(`El mayor elemento es: ${matriz.mayorMatriz()}`);
+                        break;
+                    case 8:
+                        let buscar = Number(prompt("Ingrese el número a buscar:"));
+                        if (matriz.buscaNumero(buscar)) {
+                            console.log(`El número ${buscar} SÍ se encuentra en la matriz.`);
+                        } else {
+                            console.log(`El número ${buscar} NO se encuentra en la matriz.`);
+                        }
+                        break;
+                    case 9:
+                        let buscarPos = Number(prompt("Ingrese el número a buscar:"));
+                        console.log(`Posiciones del número ${buscarPos}: ${matriz.buscaPosiciones(buscarPos)}`);
+                        break;
+                    case 10:
+                        matriz.modificaBajoDiagonal();
+                        console.log("Elementos bajo la diagonal principal cambiados a cero.");
+                        break;
+                    case 11:
+                        matriz.intercambiaFilas();
+                        console.log("Filas pares intercambiadas con filas impares.");
+                        break;
+                    case 12:
+                        matriz.copiaCeldaSuperior();
+                        console.log("Cada celda ahora contiene el doble de la celda superior.");
+                        break;
+                    case 13:
+                        matriz.ordenarMatriz();
+                        console.log("Cada fila ha sido ordenada de menor a mayor.");
+                        break;
+                    case 14:
+                        let sumasFilas = matriz.sumaFilas();
+                        console.log(`Suma de cada fila: [${sumasFilas.join(', ')}]`);
+                        break;
+                    case 15:
+                        let mayoresColumnas = matriz.mayorColumnas();
+                        console.log(`Mayor de cada columna: [${mayoresColumnas.join(', ')}]`);
+                        break;
+                    case 16:
+                        console.log("Matriz actual:");
+                        console.log(matriz.EspacioString());
+                        break;
+                    case 0:
+                        console.log("¡Hasta luego!");
+                        break;
+                    default:
+                        console.log("Opción inválida. Intente de nuevo.");
+                }
+            } while (opcion != 0);
+        }
+
+        // Funciones para interfaz web 
+        function actualizar() {
+            const tabla = document.getElementById('tabla');
+            tabla.innerHTML = '';
+            for (let i = 0; i < Matriz.CANT_FILAS; i++) {
+                const fila = tabla.insertRow();
+                for (let j = 0; j < Matriz.CANT_COLUMNAS; j++) {
+                    fila.insertCell().textContent = matriz.datos[i][j];
+                }
+            }
+        }
+
+        function resultado(txt) { document.getElementById('resultado').innerHTML = txt; }
+
+
+        function llenarMatriz() {
+            matriz.llenarMatriz(); actualizar();
+            resultado('Matriz llenada con números aleatorios entre 10 y 20');
+        }
+
+        function calcularPromedio() {
+            actualizar();
+            resultado(`El promedio de la matriz es: ${matriz.promedio().toFixed(2)}`);
+        }
+
+
+        function sumarNumero() {
+            const n = +prompt('Ingrese el número a sumar:');
+            matriz.sumaNumero(n);
+            actualizar();
+            resultado(`Se sumó ${n} a todas las celdas`);
+        }
+
+        function duplicarFila() {
+            const f = +prompt('Ingrese el número de fila a duplicar (0-3):');
+            matriz.duplicarFila(f);
+            actualizar();
+            resultado(`Fila ${f} duplicada (si es válida)`);
+        }
+
+        function sumaDiagonalPrincipal() {
+            actualizar();
+            resultado(`Suma diagonal principal: ${matriz.sumaDiagonalPrincipal()}`);
+        }
+
+        function sumaDiagonalInversa() {
+            actualizar();
+            resultado(`Suma diagonal inversa: ${matriz.sumaDiagonalInversa()}`);
+        }
+
+        function encontrarMayor() {
+            actualizar();
+            resultado(`El mayor elemento es: ${matriz.mayorMatriz()}`);
+        }
+
+        function buscarNumero() {
+            const x = +prompt('Ingrese el número a buscar:');
+            actualizar();
+            resultado(`El número ${x} ${matriz.buscaNumero(x) ? 'SÍ' : 'NO'} se encuentra en la matriz`);
+        }
+
+        function buscarPosiciones() {
+            const x = +prompt('Ingrese el número a buscar:');
+            actualizar();
+            resultado(`Posiciones del número ${x}: ${matriz.buscaPosiciones(x)}`);
+        }
+
+        function modificarBajoDiagonal() {
+            matriz.modificaBajoDiagonal();
+            actualizar();
+            resultado('Elementos bajo la diagonal principal cambiados a cero');
+        }
+
+        function intercambiarFilas() {
+            matriz.intercambiaFilas();
+            actualizar();
+            resultado('Filas pares intercambiadas con filas impares');
+        }
+
+        function copiarCeldaSuperior() {
+            matriz.copiaCeldaSuperior();
+            actualizar();
+            resultado('Cada celda ahora contiene el doble de la celda superior');
+        }
+
+        function ordenarFilas() {
+            matriz.ordenarMatriz();
+            actualizar();
+            resultado('Cada fila ha sido ordenada de menor a mayor');
+        }
+
+        function sumaFilas() {
+            actualizar();
+            resultado(`Suma de cada fila: [${matriz.sumaFilas().join(', ')}]`);
+        }
+
+        function mayorColumnas() {
+            actualizar();
+            resultado(`Mayor de cada columna: [${matriz.mayorColumnas().join(', ')}]`);
+        }
+
+        function mostrarMatriz() {
+            actualizar();
+            resultado(`Matriz actual:\n${matriz.EspacioString()}`);
+        }
+
+    </script>
+</body>
+
+</html>
